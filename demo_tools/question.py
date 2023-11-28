@@ -1,13 +1,9 @@
-# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-# SPDX-License-Identifier: Apache-2.0
-
 """
 Helper class for running scenarios at a command prompt. Asks questions, validates
 and converts input, and returns answers.
 """
 
 
-# snippet-start:[python.demo_tools.Question]
 def ask(question, *validators):
     """
     Asks a single question and validates it against a list of validators.
@@ -100,6 +96,3 @@ def in_range(lower, upper):
         )
 
     return _validate
-
-
-# snippet-end:[python.demo_tools.Question]

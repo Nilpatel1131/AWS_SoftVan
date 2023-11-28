@@ -1,6 +1,3 @@
-# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-# SPDX-License-Identifier: Apache-2.0
-
 """
 Purpose
 
@@ -18,7 +15,6 @@ from botocore.exceptions import ClientError
 logger = logging.getLogger(__name__)
 
 
-# snippet-start:[python.example_code.cognito-idp.helper.CognitoIdentityProviderWrapper.decl]
 class CognitoIdentityProviderWrapper:
     """Encapsulates Amazon Cognito actions"""
 
@@ -34,7 +30,6 @@ class CognitoIdentityProviderWrapper:
         self.client_id = client_id
         self.client_secret = client_secret
 
-    # snippet-end:[python.example_code.cognito-idp.helper.CognitoIdentityProviderWrapper.decl]
 
     def _secret_hash(self, user_name):
         """
@@ -51,7 +46,6 @@ class CognitoIdentityProviderWrapper:
         logger.info("Made secret hash for %s: %s.", user_name, secret_hash)
         return secret_hash
 
-    # snippet-start:[python.example_code.cognito-idp.SignUp]
     def sign_up_user(self, user_name, password, user_email):
         """
         Signs up a new user with Amazon Cognito. This action prompts Amazon Cognito
@@ -97,9 +91,6 @@ class CognitoIdentityProviderWrapper:
                 raise
         return confirmed
 
-    # snippet-end:[python.example_code.cognito-idp.SignUp]
-
-    # snippet-start:[python.example_code.cognito-idp.ResendConfirmationCode]
     def resend_confirmation(self, user_name):
         """
         Prompts Amazon Cognito to resend an email with a new confirmation code.
@@ -124,9 +115,6 @@ class CognitoIdentityProviderWrapper:
         else:
             return delivery
 
-    # snippet-end:[python.example_code.cognito-idp.ResendConfirmationCode]
-
-    # snippet-start:[python.example_code.cognito-idp.ConfirmSignUp]
     def confirm_user_sign_up(self, user_name, confirmation_code):
         """
         Confirms a previously created user. A user must be confirmed before they
@@ -157,9 +145,6 @@ class CognitoIdentityProviderWrapper:
         else:
             return True
 
-    # snippet-end:[python.example_code.cognito-idp.ConfirmSignUp]
-
-    # snippet-start:[python.example_code.cognito-idp.ListUsers]
     def list_users(self):
         """
         Returns a list of the users in the current user pool.
@@ -180,9 +165,6 @@ class CognitoIdentityProviderWrapper:
         else:
             return users
 
-    # snippet-end:[python.example_code.cognito-idp.ListUsers]
-
-    # snippet-start:[python.example_code.cognito-idp.AdminInitiateAuth]
     def start_sign_in(self, user_name, password):
         """
         Starts the sign-in process for a user by using administrator credentials.
@@ -234,9 +216,6 @@ class CognitoIdentityProviderWrapper:
             response.pop("ResponseMetadata", None)
             return response
 
-    # snippet-end:[python.example_code.cognito-idp.AdminInitiateAuth]
-
-    # snippet-start:[python.example_code.cognito-idp.AssociateSoftwareToken]
     def get_mfa_secret(self, session):
         """
         Gets a token that can be used to associate an MFA application with the user.
@@ -258,9 +237,6 @@ class CognitoIdentityProviderWrapper:
             response.pop("ResponseMetadata", None)
             return response
 
-    # snippet-end:[python.example_code.cognito-idp.AssociateSoftwareToken]
-
-    # snippet-start:[python.example_code.cognito-idp.VerifySoftwareToken]
     def verify_mfa(self, session, user_code):
         """
         Verify a new MFA application that is associated with a user.
@@ -285,9 +261,6 @@ class CognitoIdentityProviderWrapper:
             response.pop("ResponseMetadata", None)
             return response
 
-    # snippet-end:[python.example_code.cognito-idp.VerifySoftwareToken]
-
-    # snippet-start:[python.example_code.cognito-idp.AdminRespondToAuthChallenge]
     def respond_to_mfa_challenge(self, user_name, session, mfa_code):
         """
         Responds to a challenge for an MFA code. This completes the second step of
@@ -335,9 +308,6 @@ class CognitoIdentityProviderWrapper:
         else:
             return auth_result
 
-    # snippet-end:[python.example_code.cognito-idp.AdminRespondToAuthChallenge]
-
-    # snippet-start:[python.example_code.cognito-idp.ConfirmDevice]
     def confirm_mfa_device(
         self,
         user_name,
@@ -400,10 +370,6 @@ class CognitoIdentityProviderWrapper:
         else:
             return user_confirm
 
-    # snippet-end:[python.example_code.cognito-idp.ConfirmDevice]
-
-    # snippet-start:[python.example_code.cognito-idp.InitiateAuth]
-    # snippet-start:[python.example_code.cognito-idp.RespondToAuthChallenge]
     def sign_in_with_tracked_device(
         self,
         user_name,
