@@ -1,5 +1,3 @@
-# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-# SPDX-License-Identifier: Apache-2.0
 
 """
 Purpose
@@ -35,14 +33,12 @@ from pycognito import aws_srp
 import demo_tools.question as q
 from cognito_idp_actions import CognitoIdentityProviderWrapper
 
-# Add relative path to include demo_tools in this code example without needing to set up.
 sys.path.append("../..")
 
 
 logger = logging.getLogger(__name__)
 
 
-# snippet-start:[python.example_code.cognito-idp.Scenario_SignUpUserWithMfa]
 def run_scenario(cognito_idp_client, user_pool_id, client_id):
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
